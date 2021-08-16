@@ -28,6 +28,21 @@ main {
     justify-content: center;
     align-items: center;
     margin-bottom: calc(var(--footer-height));
+    
+}
+
+.paragraphs {
+    font-family: 'Space Mono', monospace;
+}
+
+.result-space {
+    font-family: 'Space Mono', monospace;
+}
+
+h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 3rem;
+    color: rgb(151, 21, 21)
 }
 
 section {
