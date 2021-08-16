@@ -32,6 +32,12 @@ quizButton.addEventListener('click', () => {
     if(countsAsAYes(quest3)) {
         answerCounter++;
     }
-    resultSpace.textContent = `Wow, you got ${answerCounter} out of 3 questions correct.`
 
+    if (answerCounter === 3) {
+        resultSpace.textContent = `Wow, you are a careful reader! You got ${answerCounter} out of 3 questions correct.`
+    } else if (answerCounter < 3 && answerCounter > 0) {
+        resultSpace.textContent = `Hmm, you are not perfect. You got ${answerCounter} out of 3 questions correct.`
+    } else {
+        resultSpace.textContent = `Wow, you are quite illiterate my friend. You got ${answerCounter} out of 3 questions correct.`
+    }
 })
