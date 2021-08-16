@@ -6,16 +6,17 @@
   // get user input
   // use user input to update state 
   // update DOM to reflect the new state
+
+import { countsAsAYes } from './utils.js';
+
 const quizButton = document.querySelector('#quiz-button');
 const resultSpace = document.querySelector('#result-space');
 
-function countsAsAYes(input) {
-  input[0] === 'y';
-  return true;
-}
-
 quizButton.addEventListener('click', () => {
   let answerCounter = 0;
+
+
+  console.log(countsAsAYes('no'))
 
   const takeQuiz = prompt('Do you want to test your newfound knowledge?')
   if (!countsAsAYes(takeQuiz)) {
@@ -23,16 +24,15 @@ quizButton.addEventListener('click', () => {
   }
 
   const quest1 = prompt('Does the Falcon Heavy have the highest payload of any launch vehicle ever?')
-  if(!countsAsAYes) {
+  if(!countsAsAYes(quest1)) {
     answerCounter++;
   }
   const quest2 = prompt('Was the maiden launch in 2018?')
-  if(countsAsAYes) {
+  if(countsAsAYes(quest2)) {
     answerCounter++;
   }
   const quest3 = prompt('Was the Falcon Heavy designed to carry humans beyond low Earth orbit?')
-
-  if(countsAsAYes) {
+  if(countsAsAYes(quest3)) {
   answerCounter++;
   }
   resultSpace.textContent = `Wow, you got ${answerCounter} out of 3 questions correct.`
