@@ -9,3 +9,21 @@
 8) Consider your data model. What objects will you be using? What are the key/value pairs? What arrays do you need? What needs to live in local storage?
 9) Consider what features _depend_ on what other features. Use this dependency logic to figure out what order to complete tasks.
 
+## Let's make a plan
+
+HTML 
+
+Title
+Block of text
+Quiz Button
+Results Space
+
+Events
+
+Quiz Button Click
+    -What happens?
+    Prompts asking questions
+    Write the results in result space
+
+State
+You need a counter for the correct answers
