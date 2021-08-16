@@ -11,9 +11,15 @@ import { countsAsAYes } from './utils.js';
 
 const quizButton = document.querySelector('#quiz-button');
 const resultSpace = document.querySelector('#result-space');
+const timesPassed = document.querySelector('#times-passed');
+
+let quizCounter = 0;
+let passCounter = 0;
+let failCounter = 0;
+
 
 quizButton.addEventListener('click', () => {
-    let answerCounter = 0; 
+    let answerCounter = 0;
 
     const takeQuiz = prompt('Do you want to test your newfound knowledge?')
     if (!countsAsAYes(takeQuiz)) {
@@ -35,9 +41,17 @@ quizButton.addEventListener('click', () => {
 
     if (answerCounter === 3) {
         resultSpace.textContent = `Wow, you are a careful reader! You got ${answerCounter} out of 3 questions correct.`
+        resultSpace.style.color = "blue";
+        passCounter++;
     } else if (answerCounter < 3 && answerCounter > 0) {
         resultSpace.textContent = `Hmm, you are not perfect. You got ${answerCounter} out of 3 questions correct.`
+        failCounter++
     } else {
         resultSpace.textContent = `Wow, you are quite illiterate my friend. You got ${answerCounter} out of 3 questions correct.`
+        resultSpace.style.color = "red";
+        failCounter++
     }
+    quizCounter++
+    timesPassed.textContent = `You have passed ${passCounter} and failed ${failCounter} out of ${quizCounter} attempts.`
+    
 })
