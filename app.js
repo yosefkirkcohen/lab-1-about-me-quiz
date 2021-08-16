@@ -12,6 +12,7 @@ import { countsAsAYes } from './utils.js';
 const quizButton = document.querySelector('#quiz-button');
 const resultSpace = document.querySelector('#result-space');
 const timesPassed = document.querySelector('#times-passed');
+const resetButton = document.querySelector('#reset-button');
 
 let quizCounter = 0;
 let passCounter = 0;
@@ -54,4 +55,11 @@ quizButton.addEventListener('click', () => {
     quizCounter++
     timesPassed.textContent = `You have passed ${passCounter} and failed ${failCounter} out of ${quizCounter} attempts.`
     
+})
+
+resetButton.addEventListener('click', () => {
+    quizCounter = 0;
+    passCounter = 0;
+    failCounter = 0;
+    timesPassed.textContent = "You have reset the quiz counter";
 })
