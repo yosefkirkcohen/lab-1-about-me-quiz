@@ -9,25 +9,30 @@
 const quizButton = document.querySelector('#quiz-button');
 const resultSpace = document.querySelector('#result-space');
 
+function countsAsAYes(input) {
+  input[0] === 'y';
+  return true;
+}
+
 quizButton.addEventListener('click', () => {
   let answerCounter = 0;
 
   const takeQuiz = prompt('Do you want to test your newfound knowledge?')
-  if (takeQuiz[0] !== 'y') {
+  if (!countsAsAYes(takeQuiz)) {
   return;
   }
 
   const quest1 = prompt('Does the Falcon Heavy have the highest payload of any launch vehicle ever?')
-  if(quest1[0] === 'n') {
+  if(!countsAsAYes) {
     answerCounter++;
   }
   const quest2 = prompt('Was the maiden launch in 2018?')
-  if(quest2[0] === 'y') {
+  if(countsAsAYes) {
     answerCounter++;
   }
   const quest3 = prompt('Was the Falcon Heavy designed to carry humans beyond low Earth orbit?')
 
-  if(quest3[0] === 'y') {
+  if(countsAsAYes) {
   answerCounter++;
   }
   resultSpace.textContent = `Wow, you got ${answerCounter} out of 3 questions correct.`
