@@ -43,20 +43,18 @@ quizButton.addEventListener('click', () => {
     }
 
     if (answerCounter === 3) {
-        resultSpace.textContent = `Wow, you are a careful reader, ${askName}! You got ${answerCounter} out of 3 questions correct.`;
+        winContent(askName, answerCounter);
         winThings();
     
     } else if (answerCounter < 3 && answerCounter > 0) {
-        resultSpace.textContent = `Hmm, you are not perfect, ${askName}. You got ${answerCounter} out of 3 questions correct.`;
+        notPerfectContent(askName, answerCounter);
         failCounter++;
     } else {
-        resultSpace.textContent = `Wow, you are quite illiterate, ${askName}. You got ${answerCounter} out of 3 questions correct.`;
-        resultSpace.style.color = 'red';
+        failContent(askName, answerCounter);
         failCounter++;
     }
-    quizCounter++;
-    timesPassed.textContent = `You have passed ${passCounter} and failed ${failCounter} out of ${quizCounter} attempts.`;
-    
+
+    resultsAndIncrement(passCounter, failCounter, quizCounter);    
 });
 
 resetButton.addEventListener('click', () => {
@@ -67,6 +65,24 @@ resetButton.addEventListener('click', () => {
 });
 
 function winThings() {
-    resultSpace.style.color = 'blue';
     passCounter++;
+}
+
+function winContent(userName, number) {
+    resultSpace.style.color = 'blue';
+    resultSpace.textContent = `Wow, you are a careful reader, ${userName}! You got ${number} out of 3 questions correct.`;
+}
+
+function notPerfectContent(userName, number) {
+    resultSpace.textContent = `Hmm, you are not perfect, ${userName}. You got ${number} out of 3 questions correct.`;
+}
+
+function failContent(userName, number) {
+    resultSpace.textContent = `Wow, you are quite illiterate, ${userName}. You got ${number} out of 3 questions correct.`;
+    resultSpace.style.color = 'red';
+}
+
+function resultsAndIncrement(pass, fail, total) {
+    total++;
+    timesPassed.textContent = `You have passed ${pass} and failed ${fail} out of ${total} attempts.`;
 }
