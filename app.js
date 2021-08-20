@@ -22,44 +22,51 @@ let failCounter = 0;
 quizButton.addEventListener('click', () => {
     let answerCounter = 0;
 
-    const takeQuiz = prompt('Do you want to test your newfound knowledge?')
+    const askName = prompt('What is your first name?');
+
+    const takeQuiz = prompt(`Do you want to test your newfound knowledge ${askName}?`);
     if (!countsAsAYes(takeQuiz)) {
         return;
     }
 
-    const quest1 = prompt('Does the Falcon Heavy have the highest payload of any launch vehicle ever?')
+    const quest1 = prompt('Does the Falcon Heavy have the highest payload of any launch vehicle ever?');
     if (!countsAsAYes(quest1)) {
         answerCounter++;
     }
-    const quest2 = prompt('Was the maiden launch in 2018?')
+    const quest2 = prompt('Was the maiden launch in 2018?');
     if (countsAsAYes(quest2)) {
         answerCounter++;
     }
-    const quest3 = prompt('Was the Falcon Heavy designed to carry humans beyond low Earth orbit?')
-    if(countsAsAYes(quest3)) {
+    const quest3 = prompt('Was the Falcon Heavy designed to carry humans beyond low Earth orbit?');
+    if (countsAsAYes(quest3)) {
         answerCounter++;
     }
 
     if (answerCounter === 3) {
-        resultSpace.textContent = `Wow, you are a careful reader! You got ${answerCounter} out of 3 questions correct.`
-        resultSpace.style.color = "blue";
-        passCounter++;
-    } else if (answerCounter < 3 && answerCounter > 0) {
-        resultSpace.textContent = `Hmm, you are not perfect. You got ${answerCounter} out of 3 questions correct.`
-        failCounter++
-    } else {
-        resultSpace.textContent = `Wow, you are quite illiterate my friend. You got ${answerCounter} out of 3 questions correct.`
-        resultSpace.style.color = "red";
-        failCounter++
-    }
-    quizCounter++
-    timesPassed.textContent = `You have passed ${passCounter} and failed ${failCounter} out of ${quizCounter} attempts.`
+        resultSpace.textContent = `Wow, you are a careful reader, ${askName}! You got ${answerCounter} out of 3 questions correct.`;
+        winThings();
     
-})
+    } else if (answerCounter < 3 && answerCounter > 0) {
+        resultSpace.textContent = `Hmm, you are not perfect, ${askName}. You got ${answerCounter} out of 3 questions correct.`;
+        failCounter++;
+    } else {
+        resultSpace.textContent = `Wow, you are quite illiterate, ${askName}. You got ${answerCounter} out of 3 questions correct.`;
+        resultSpace.style.color = 'red';
+        failCounter++;
+    }
+    quizCounter++;
+    timesPassed.textContent = `You have passed ${passCounter} and failed ${failCounter} out of ${quizCounter} attempts.`;
+    
+});
 
 resetButton.addEventListener('click', () => {
     quizCounter = 0;
     passCounter = 0;
     failCounter = 0;
-    timesPassed.textContent = "You have reset the quiz counter";
-})
+    timesPassed.textContent = 'You have reset the quiz counter';
+});
+
+function winThings() {
+    resultSpace.style.color = 'blue';
+    passCounter++;
+}
